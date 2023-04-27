@@ -1,0 +1,65 @@
+    {% extends 'base.html' %}
+    {% block stylesheet %}
+    .container{
+    height:1000px;
+    }
+    {% endblock %}
+
+    {% block content %}
+    <div class="row" xmlns:>
+                <div class="col s7 offset-s3 ">
+                  <div class="card">
+
+
+
+                          {% if messages %}
+                                {% for message in messages %}
+                                <div {% if message.tags %} class="'{{messages.tags}}"{% endif %}>
+                                     <p style="color:red;font-size:30px">
+                                         {{message}}
+                                     </p>
+
+                                 </div>
+                                {% endfor %}
+                            {%endif%}
+                      </div>
+
+                          </div>
+
+
+
+
+
+                  </div>
+
+        <div class="container">
+             <div class="row">
+                <div class="col s6 offset-s3 ">
+                  <div class="card">
+
+                      <form method="POST" class="card">
+                          <div class="card-content ">
+                            <span class="card-title">Time Card</span>
+
+                             {% csrf_token %}
+                             <div id="forms">
+                                {{ form.as_p }}
+                            </div>
+                          </div>
+                           <div class="card-action">
+                              <button class="waves-effect waves-light btn" type="submit" >Submit</button>
+                           </div>
+
+
+
+                        </form>
+
+
+                  </div>
+                </div>
+              </div>
+                </div>
+
+
+    {% endblock %}
+<script>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+
+        <title>TimeSheet</title>
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('select').formSelect();
+      });
+    </script>
+    <!-- Compiled and minified CSS -->
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel = "stylesheet"
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!--
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style type="text/css">
+        .spacer{
+            margin-top:25px;
+        }
+    </style>-->
+    {% block head %}
+   <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Time Sheet</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          {% if request.user.is_superuser %}
+            <li><a href="{% url 'auth:logout' %}">Logout</a></li>
+            <li><a href="{% url 'timesheet:timecard'%}">Timecard</a></li>
+            <li><a href="{% url 'timesheet:summary'%}">Summary</a></li>
+          <li><a href="{% url 'timesheet:employees'%}">Users</a></li>
+          <li><a href="{% url 'timesheet:total_leaves'%}">Total Leaves</a></li>
+          {% elif request.user.is_authenticated %}
+
+            <li><a href="{% url 'auth:logout'%}">Logout</a></li>
+            <li><a href="{% url 'timesheet:timecard'%}">Timecard</a></li>
+            <li><a href="{% url 'timesheet:timecard1'%}">Timecard1</a></li>
+            <li><a href="{% url 'timesheet:summary'%}">Summary</a></li>
+
+          {% else %}
+          ` <li><a href="">Login</a></li>
+          {% endif %}
+      </ul>
+    </div>
+  </nav>
+        {%endblock%}
+    </head>
+    <body>
+        {% block content %} {%endblock%}
+
+    {% block custom_js %}{% endblock %}
+    </body>
+</html>

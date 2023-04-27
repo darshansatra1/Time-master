@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    {% for timecard in timecards %}
+        {% include 'timesheet/component/card.html' %}
+    {% endfor %}
+
+{% endblock %}
+
+
+
+
+
+
